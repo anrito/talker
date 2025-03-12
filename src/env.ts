@@ -19,6 +19,7 @@ const EnvSchema = z.object({
   DATABASE_URL: z.string(),
   DB_MIGRATING: stringBoolean,
   DB_SEEDING: stringBoolean,
+  SESSION_SECRET: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
