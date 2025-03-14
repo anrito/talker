@@ -1,1 +1,1 @@
-export { default as users } from "@/futures/users/server/models/users.model";
+export { UserModel } from "@/futures/users/server/models/UserModel";
