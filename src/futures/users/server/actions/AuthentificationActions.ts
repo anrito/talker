@@ -1,20 +1,17 @@
 "use server";
 
 // import { createSession, deleteSession } from "@/lib/session";
-// import { redirect } from "next/navigation";
 import { RegistrationRequest } from "../requests/RegistrationRequest";
 import {
   create,
   getUserByEmail,
 } from "@/futures/users/server/repositories/UserRepository";
 import { genSaltSync, hashSync } from "bcrypt-ts";
+import { redirect } from "next/navigation";
 
-// const testUser = {
-//   id: "1",
-//   email: "anrioboladze@gmail.com",
-//   password: "12345678",
-// };
-
+/**
+ * Registration action
+ */
 export async function registrationAction(
   prevState: unknown,
   formData: FormData
@@ -24,6 +21,7 @@ export async function registrationAction(
   if (!request.success) {
     return {
       errors: request.error.flatten().fieldErrors,
+      values: Object.fromEntries(formData),
     };
   }
   // check if user exists
@@ -33,6 +31,7 @@ export async function registrationAction(
       errors: {
         email: ["User with this email already exists"],
       },
+      values: Object.fromEntries(formData),
     };
   }
 
@@ -40,10 +39,10 @@ export async function registrationAction(
   request.data.password = hashSync(request.data.password, genSaltSync(10));
 
   // create the User database
-  await create(request.data);
+  const newUser = await create(request.data);
 
   // await createSession(testUser.id);
-  // redirect("/dashboard");
+  redirect("/verification?email=" + newUser.email);
 }
 
 // export async function login(prevState: unknown, formData: FormData) {
