@@ -3,8 +3,10 @@
 @plugin "tailwindcss-animate";
 
 @theme inline {
+  --h-dvh: 57px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-noto-sans: var(--font-noto-sans-georgian);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);

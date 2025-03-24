@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function Home() {
   // Generate a hash
 
@@ -8,5 +10,9 @@ export default async function Home() {
   // console.log("Correct password valid:", isValid);
   // console.log("Incorrect password valid:", isInvalid);
 
-  return <div>Talker Version 0.1</div>;
+  return (
+    <div>
+      <Link href="/registration">Register</Link>
+    </div>
+  );
 }

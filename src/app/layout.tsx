@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +10,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const notoSansGeorgian = Noto_Sans_Georgian({
+  subsets: ["georgian"],
+  // weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-sans-georgian",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansGeorgian.variable} ${geistSans.variable} ${geistMono.variable} font-noto-sans antialiased`}
       >
         {children}
       </body>
