@@ -20,6 +20,7 @@ const EnvSchema = z.object({
   DB_MIGRATING: stringBoolean,
   DB_SEEDING: stringBoolean,
   SESSION_SECRET: z.string(),
+  SENDGRID_API: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;

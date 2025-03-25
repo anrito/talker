@@ -14,4 +14,5 @@ export const RegistrationRequest = z.object({
     .string()
     .min(6, { message: "Password must be at least 8 characters" })
     .trim(),
+  terms: z.string({ message: "წესებსა და პირობებზე დათანხმება სავალდებულოა" }),
 });

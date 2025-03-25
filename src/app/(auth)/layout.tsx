@@ -10,13 +10,15 @@ export default function AuthLayout({
   return (
     <div className="flex flex-col lg:flex-row w-full min-h-screen">
       <div className="w-full h-screen lg:h-auto lg:w-9/12 p-6 flex items-center justify-center relative">
-        <Button
-          variant="ghost"
-          className="absolute top-4 left-4 flex items-center gap-2 cursor-pointer"
-        >
-          <ArrowLeft className="h-5 w-5" />
-          <Link href="/">უკან</Link>
-        </Button>
+        <Link href="/">
+          <Button
+            variant="ghost"
+            className="absolute top-4 left-4 flex items-center gap-2 cursor-pointer"
+          >
+            <ArrowLeft className="h-5 w-5" />
+            უკან
+          </Button>
+        </Link>
         {children}
       </div>
 

@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { EmailRegistrationForm } from "@/futures/users/components/forms/EmailRegistrationForm";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -67,9 +68,9 @@ export default function Page() {
         <CardFooter className="flex flex-col space-y-4">
           <p className="text-center text-sm">
             უკვე გაქვს ანგარიში ?{" "}
-            <a href="#" className="text-primary hover:underline">
+            <Link href="/login" className="text-primary hover:underline">
               გაიარე ავტორიზაცია
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>

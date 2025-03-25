@@ -2,7 +2,7 @@ import { db } from "@/drizzle";
 import { UserModel } from "../models/UserModel";
 import { eq } from "drizzle-orm";
 
-export async function create(data: typeof UserModel.$inferInsert) {
+export async function createUser(data: typeof UserModel.$inferInsert) {
   const result = await db
     .insert(UserModel)
     .values({
