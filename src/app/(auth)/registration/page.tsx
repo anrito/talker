@@ -58,7 +58,7 @@ export default function Page() {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-white px-2 text-muted-foreground">
-                Or continue with
+                ან შექმენი ექაუნთი თოქერზე
               </span>
             </div>
           </div>

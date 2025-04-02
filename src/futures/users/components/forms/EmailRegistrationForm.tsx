@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
-import { registrationAction } from "@/futures/users/server/actions/RegistrationAction";
+import { registrationAction } from "../../server/actions/RegistrationAction";
 import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 

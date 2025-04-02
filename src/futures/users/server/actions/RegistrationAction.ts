@@ -3,10 +3,10 @@
 // import { createSession, deleteSession } from "@/lib/session";
 import { RegistrationRequest } from "../requests/RegistrationRequest";
 import { createUser, getUserByEmail } from "../repositories/UserRepository";
-import { createVerification } from "../repositories/VerificationRepository";
+import { create as createVerification } from "../repositories/VerificationRepository";
 import { genSaltSync, hashSync } from "bcrypt-ts";
 import { redirect } from "next/navigation";
-import { SendVerificationEmail } from "./SendVerificationEmail";
+import { SendVerificationEmail } from "./VerificationAction";
 
 /**
  * Registration action
@@ -15,8 +15,6 @@ export async function registrationAction(
   prevState: unknown,
   formData: FormData
 ) {
-  console.log(Object.fromEntries(formData));
-
   const request = RegistrationRequest.safeParse(Object.fromEntries(formData));
 
   if (!request.success) {
@@ -38,14 +36,12 @@ export async function registrationAction(
 
   // hash the password
   request.data.password = hashSync(request.data.password, genSaltSync(10));
-
   // create new User Repository
   const newUser = await createUser(request.data);
   // create new Verification Record
   const verificationCode = await createVerification(newUser.email);
   // send email with verification code
   await SendVerificationEmail(newUser.email, verificationCode.code);
-
   // await createSession(testUser.id);
   redirect("/verification?email=" + newUser.email);
 }
