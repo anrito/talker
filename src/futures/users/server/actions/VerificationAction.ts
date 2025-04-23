@@ -22,7 +22,7 @@ export async function verificationAction(
     };
   }
   // TODO: Get the verification record by email
-  let isVerificationCode = await checkVerificationCodeByEmail(
+  const isVerificationCode = await checkVerificationCodeByEmail(
     request.data.email,
     request.data.verificationCode
   );

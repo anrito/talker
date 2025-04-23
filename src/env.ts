@@ -21,7 +21,12 @@ const EnvSchema = z.object({
   DB_SEEDING: stringBoolean,
   SESSION_SECRET: z.string(),
   SENDGRID_API: z.string(),
+  LIVEKIT_API_KEY: z.string(),
+  LIVEKIT_API_SECRET: z.string(),
+  LIVEKIT_URL: z.string(),
 });
+
+console.log("Loading environment variables from .env file");
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
 

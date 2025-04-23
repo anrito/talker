@@ -20,8 +20,10 @@ import { verificationAction } from "../../server/actions/VerificationAction";
 import { useSearchParams } from "next/navigation";
 import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Suspense } from "react";
 
-export function VerificationForm() {
+// Create a client component that uses useSearchParams
+function VerificationFormContent() {
   const searchParams = useSearchParams();
   const [state, verificationFormAction] = useActionState(
     verificationAction,
@@ -134,5 +136,14 @@ export function VerificationForm() {
         </CardFooter>
       </Card>
     </form>
+  );
+}
+
+// Wrap the component in Suspense
+export function VerificationForm() {
+  return (
+    <Suspense fallback={<div>Loading verification form...</div>}>
+      <VerificationFormContent />
+    </Suspense>
   );
 }
