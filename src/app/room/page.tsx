@@ -7,6 +7,7 @@ import {
   RoomAudioRenderer,
   useTracks,
   RoomContext,
+  Chat,
 } from "@livekit/components-react";
 import { Room, Track } from "livekit-client";
 import "@livekit/components-styles";
@@ -15,7 +16,7 @@ import { useEffect, useState } from "react";
 export default function Page() {
   // TODO: get user input for room and name
   const room = "test-room-1";
-  const name = "Anri Oboladze";
+  const name = "Anri Oboladze " + Math.floor(Math.random() * 1000);
   const [roomInstance] = useState(
     () =>
       new Room({
@@ -63,6 +64,8 @@ export default function Page() {
         <RoomAudioRenderer />
         {/* Controls for the user to start/stop audio, video, and screen share tracks */}
         <ControlBar />
+        {/* Chat component for sending and receiving messages */}
+        <Chat />
       </div>
     </RoomContext.Provider>
   );
